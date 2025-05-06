@@ -16,3 +16,9 @@ Followed by pnpm dev to start the development server.
     pnpm dev
 
 pnpm dev starts your Next.js development server on port 3000
+
+## Common issues
+
+Next.js is out of date.
+
+    pnpm add next@latest
