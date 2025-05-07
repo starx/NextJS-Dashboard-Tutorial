@@ -1,9 +1,7 @@
 'use server';
 
 import { custom, z } from 'zod';
-import postgres from 'postgres';
- 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+import { sql } from '@/app/lib/db';
 
 const FormSchema = z.object({
     id: z.string(),
