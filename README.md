@@ -17,6 +17,11 @@ Followed by pnpm dev to start the development server.
 
 pnpm dev starts your Next.js development server on port 3000
 
+## Password
+
+em: user@nextmail.com
+pw: 123456
+
 ## Common issues
 
 Next.js is out of date.
