@@ -4,6 +4,20 @@ This is the starter template for the Next.js App Router Course. It contains the 
 
 For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
 
+## Project structure
+
+**Actions**
+
+Abstraction layer for the ui to use the services, form actions, links etc
+
+```txt
+/app
+  /invoices
+    actions.ts        ← local to the invoices feature
+  /users
+    actions.ts
+```
+
 ## Dev server
 
 Run pnpm i to install the project's packages.
