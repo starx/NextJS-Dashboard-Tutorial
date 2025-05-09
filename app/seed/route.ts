@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { invoices, customers, revenue, users } from '../../lib/placeholder-data';
+import { invoices, customers, revenue, users } from '@/lib/placeholder-data';
 
 import { sql } from "@/lib/db";
 
