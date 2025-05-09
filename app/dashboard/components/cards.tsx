@@ -13,7 +13,7 @@ const iconMap = {
   invoices: InboxIcon,
 };
 
-import { fetchCardData } from '@/lib/data';
+import { fetchCardData } from '@/lib/db/dashboard';
 
 export default async function CardWrapper() {
   const {
