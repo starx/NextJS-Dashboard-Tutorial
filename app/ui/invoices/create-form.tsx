@@ -1,6 +1,6 @@
 'use client';
 
-import { CustomerField } from '@/app/lib/definitions';
+import { CustomerField } from '@/lib/definitions';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { createInvoice, State } from '@/app/dashboard/invoices/actions';
