@@ -1,5 +1,5 @@
-import Form from '@/ui/components/invoices/create-form';
-import Breadcrumbs from '@/ui/components/invoices/breadcrumbs';
+import Form from '@/app/dashboard/invoices/components/create-form';
+import Breadcrumbs from '@/ui/components/breadcrumbs';
 import { fetchCustomers } from '@/lib/data';
  
 import { Metadata } from 'next';
