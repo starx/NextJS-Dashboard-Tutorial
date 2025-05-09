@@ -6,6 +6,12 @@ For more information, see the [course curriculum](https://nextjs.org/learn) on t
 
 ## Project structure
 
+**App**
+
+The `app/`
+
+See this as the presentation layer of your app, rather than what `app/` or `src/` represents in other frameworks. It defines routes, layouts, templates, metadata, loading states, error boundaries, and server actions.
+
 **Actions**
 
 Abstraction layer for the ui to use the services, form actions, links etc
