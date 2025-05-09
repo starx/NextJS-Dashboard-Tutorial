@@ -3,7 +3,7 @@
 import { CustomerField } from '@/app/lib/definitions';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-import { createInvoice, State } from '@/app/lib/invoice-actions';
+import { createInvoice, State } from '@/app/dashboard/invoices/actions';
 import { useActionState } from 'react';
 import FormFields from './form-fields';
 

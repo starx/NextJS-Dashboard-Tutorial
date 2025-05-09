@@ -1,4 +1,4 @@
-import { deleteInvoice } from '@/app/lib/invoice-actions';
+import { deleteInvoice } from '@/app/dashboard/invoices/actions';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
