@@ -1,5 +1,5 @@
-import '@/app/ui/global.css'
-import { inter } from '@/app/ui/fonts';
+import '@/ui/styles/global.css'
+import { inter } from '@/ui/styles/fonts';
 
 import { Metadata } from 'next';
  

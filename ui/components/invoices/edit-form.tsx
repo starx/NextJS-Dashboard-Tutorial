@@ -2,7 +2,7 @@
 
 import { CustomerField, InvoiceForm } from '@/lib/definitions';
 import Link from 'next/link';
-import { Button } from '@/app/ui/button';
+import { Button } from '@/ui/components/button';
 import { updateInvoice, State } from '@/app/dashboard/invoices/actions';
 import { useActionState } from 'react';
 import FormFields from './form-fields';
