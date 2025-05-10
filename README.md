@@ -24,6 +24,12 @@ Abstraction layer for the ui to use the services, form actions, links etc
     actions.ts
 ```
 
+**lib**
+
+`db/`: raw queries or ORM
+`services/`: business computation or derived logic
+`types/`: TypeScript or Zod types
+
 ## Dev server
 
 Run pnpm i to install the project's packages.
