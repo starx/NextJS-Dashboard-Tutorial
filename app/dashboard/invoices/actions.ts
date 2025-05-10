@@ -1,26 +1,9 @@
 'use server';
 
-import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { sql } from '@/lib/db';
-
-const FormSchema = z.object({
-    id: z.string(),
-    customerId: z.string({
-        invalid_type_error: 'Please select a customer.',
-    }),
-    amount: z.coerce
-        .number()
-        .gt(0, { message: 'Please enter an amount greater than $0.' }),
-    status: z.enum(['pending', 'paid'], {
-        invalid_type_error: 'Please select an invoice status.',
-    }),
-    date: z.string(),
-});
-
-const CreateInvoice = FormSchema.omit({ id: true, date: true })
-const UpdateInvoice = FormSchema.omit({ id: true, date: true })
+import { CreateInvoiceFormSchema, UpdateInvoiceFormSchema } from '@/lib/types/invoice';
 
 export type State = {
     errors?: {
@@ -32,7 +15,7 @@ export type State = {
 }
 
 async function validateForm(prevState: State | undefined, formData: FormData, mode: "add" | "edit") {
-    const schema = mode === "add" ? CreateInvoice : UpdateInvoice;
+    const schema = mode === "add" ? CreateInvoiceFormSchema : UpdateInvoiceFormSchema;
 
     const parsedData = {
         customerId: formData.get("customerId"),
@@ -64,7 +47,7 @@ async function validateForm(prevState: State | undefined, formData: FormData, mo
 
 }
 
-export async function createInvoice(prevState: State | undefined, formData: FormData) {
+export async function createInvoiceFormSchema(prevState: State | undefined, formData: FormData) {
     const validationResult = await validateForm(prevState, formData, 'add');
     if ('error' in validationResult) {
         return validationResult.error;
