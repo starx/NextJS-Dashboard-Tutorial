@@ -3,13 +3,13 @@
 import { CustomerField } from '@/lib/types/customer';
 import Link from 'next/link';
 import { Button } from '@/ui/components/button';
-import { createInvoice, State } from '@/app/dashboard/invoices/actions';
+import { createInvoiceAction, State } from '@/app/dashboard/invoices/actions';
 import { useActionState } from 'react';
 import FormFields from './form-fields';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState: State = { message: null, errors: {} };
-  const [state, formAction] = useActionState(createInvoice, initialState);
+  const [state, formAction] = useActionState(createInvoiceAction, initialState);
 
   return (
     <form action={formAction}>

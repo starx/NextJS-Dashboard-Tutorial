@@ -1,13 +1,13 @@
 'use server';
 
-import { signIn } from '@/auth';
+import { signIn } from '@/lib/services/auth';
 import { AuthError } from 'next-auth';
 
 function isAuthErrorWithType(error: unknown): error is { type: string } {
   return typeof error === 'object' && error !== null && 'type' in error;
 }
 
-export async function authenticate(
+export async function authenticateAction(
     prevState: string | undefined,
     formData: FormData,
   ) {
@@ -24,4 +24,4 @@ export async function authenticate(
       }
       throw error;
     }
-  }
+}

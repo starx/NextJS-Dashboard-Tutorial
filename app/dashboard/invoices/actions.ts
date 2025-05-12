@@ -2,8 +2,8 @@
 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { sql } from '@/lib/db';
 import { CreateInvoiceFormSchema, UpdateInvoiceFormSchema } from '@/lib/types/invoice';
+import { createInvoice, deleteInvoice, updateInvoice } from '@/lib/db/invoice';
 
 export type State = {
     errors?: {
@@ -47,7 +47,7 @@ async function validateForm(prevState: State | undefined, formData: FormData, mo
 
 }
 
-export async function createInvoiceFormSchema(prevState: State | undefined, formData: FormData) {
+export async function createInvoiceAction(prevState: State | undefined, formData: FormData) {
     const validationResult = await validateForm(prevState, formData, 'add');
     if ('error' in validationResult) {
         return validationResult.error;
@@ -56,10 +56,7 @@ export async function createInvoiceFormSchema(prevState: State | undefined, form
     const { customerId, amount, status, date } = validationResult.data;
 
     try {
-        await sql`
-            INSERT INTO invoices (customer_id, amount, status, date)
-            VALUES (${customerId}, ${amount}, ${status}, ${date})
-        `;
+        createInvoice({ customerId, amount, status, date });
     } catch(error) {
         console.log(error);
         // If a database error occurs, return a more specific error.
@@ -73,7 +70,7 @@ export async function createInvoiceFormSchema(prevState: State | undefined, form
     redirect('/dashboard/invoices');
 }
 
-export async function updateInvoice(id: string, prevState: State | undefined, formData: FormData) {
+export async function updateInvoiceAction(id: string, prevState: State | undefined, formData: FormData) {
     const validationResult = await validateForm(prevState, formData, 'edit');
     if ('error' in validationResult) {
         return validationResult.error;
@@ -82,11 +79,7 @@ export async function updateInvoice(id: string, prevState: State | undefined, fo
     const { customerId, amount, status } = validationResult.data;
    
     try {
-        await sql`
-          UPDATE invoices
-          SET customer_id = ${customerId}, amount = ${amount}, status = ${status}
-          WHERE id = ${id}
-        `;
+        updateInvoice({ id, customerId, amount, status });
     } catch(error) {
         console.log(error);
         // If a database error occurs, return a more specific error.
@@ -101,9 +94,9 @@ export async function updateInvoice(id: string, prevState: State | undefined, fo
     redirect('/dashboard/invoices');
 }
 
-export async function deleteInvoice(id: string) {
+export async function deleteInvoiceAction(id: string) {
     try {
-        await sql`DELETE FROM invoices WHERE id = ${id}`;
+        deleteInvoice(id);
     } catch(error) {
         console.log(error);
     }

@@ -43,10 +43,34 @@ Followed by pnpm dev to start the development server.
 
 pnpm dev starts your Next.js development server on port 3000
 
+## db
+
+init
+
+```sh
+npx prisma generate
+npx prisma migrate dev --name init
+```
+
+reset
+
+```sh
+pnpm exec prisma generate
+pnpm exec prisma migrate reset
+```
+
+reinit
+
+```sh
+npx prisma format
+npx prisma generate
+npx prisma migrate dev --name cleanup-schema
+```
+
 ## Password
 
-em: user@nextmail.com
-pw: 123456
+em: test@email.com
+pw: testPass
 
 ## Common issues
 

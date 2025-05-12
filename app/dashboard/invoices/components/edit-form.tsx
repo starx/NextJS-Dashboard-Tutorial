@@ -4,7 +4,7 @@ import { CustomerField } from '@/lib/types/customer';
 import { InvoiceForm } from '@/lib/types/invoice';
 import Link from 'next/link';
 import { Button } from '@/ui/components/button';
-import { updateInvoice, State } from '@/app/dashboard/invoices/actions';
+import { updateInvoiceAction, State } from '@/app/dashboard/invoices/actions';
 import { useActionState } from 'react';
 import FormFields from './form-fields';
 
@@ -17,7 +17,7 @@ export default function EditInvoiceForm({
 }) {
   const initialState: State = { message: null, errors: {} };
 
-  const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+  const updateInvoiceWithId = updateInvoiceAction.bind(null, invoice.id);
   const [state, formAction] = useActionState(updateInvoiceWithId, initialState);
 
   return (
